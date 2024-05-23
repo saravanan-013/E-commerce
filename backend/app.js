@@ -22,7 +22,9 @@ app.use('/api/v1/',orders);
 //         res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'))
 //     });
 // }
-
+app.get('/',(req,res)=>{
+    res.send("endpoints are working")
+})
 app.listen(process.env.PORT, () => {
     console.log(`Server listening to Port ${process.env.PORT} in ${process.env.NODE_ENV}`)
 });
