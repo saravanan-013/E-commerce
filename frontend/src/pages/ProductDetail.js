@@ -6,12 +6,27 @@ export default function ProductDetail({cartItems, setCartItems}) {
     const [product, setProduct] = useState(null);
     const [qty, setQty] = useState(1);
     const {id} = useParams();
-
+    URL="https://e-commerce-e1f2.onrender.com";
+    
     useEffect(() => {
-        fetch(process.env.RENDER_APP_API_URL+'/product/'+id)
-        .then(res => res.json())
-        .then( res => setProduct(res.product))
-    },[])
+        const fetchProduct = async () => {
+            try {
+                const response = await fetch(URL +`/product/${id}`);
+                
+                if (!response.ok) {
+                    console.log(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                setProduct(data.product);
+            } catch (error) {
+                console.log('Error fetching product:', error);
+            }
+        };
+
+        fetchProduct();
+    }, [id]);
+
 
     function addToCart() {
         const itemExist = cartItems.find((item) => item.product._id == product._id)

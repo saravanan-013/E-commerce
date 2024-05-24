@@ -38,9 +38,9 @@ export default function Cart({cartItems, setCartItems}) {
         })
         setCartItems(updatedItems)
     }
-
+    URL="https://e-commerce-e1f2.onrender.com";
     function placeOrderHandler() {
-        fetch(process.env.RENDER_APP_API_URL+'/order', {
+        fetch(URL+'/order', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(cartItems)
