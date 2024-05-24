@@ -10,7 +10,7 @@ export default function Home() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch( URL +`/products?${searchParams}`);
+                const response = await fetch( URL +`/products?${id}`);
                 
                 if (!response.ok) {
                     console.log(`HTTP error! status: ${response.status}`);
@@ -29,7 +29,7 @@ export default function Home() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch(`${URL}/products?${searchParams}`);
+                const response = await fetch(URL+`/products?${id}`);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -38,7 +38,7 @@ export default function Home() {
                 const data = await response.json();
                 setProducts(data.products);
             } catch (err) {
-                console.error('Error fetching products:', err.message);
+                console.log('Error fetching products:', err.message);
                 setProducts([]);
                
             }
