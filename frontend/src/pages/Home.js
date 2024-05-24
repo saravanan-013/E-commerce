@@ -10,7 +10,7 @@ export default function Home() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch( URL +`/products?${id}`);
+                const response = await fetch( URL +`/products`);
                 
                 if (!response.ok) {
                     console.log(`HTTP error! status: ${response.status}`);
@@ -29,7 +29,7 @@ export default function Home() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch(URL+`/products?${id}`);
+                const response = await fetch(URL+`/products`);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
