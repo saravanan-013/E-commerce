@@ -1,15 +1,15 @@
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import {toast} from 'react-toastify';
-
+import  Axios from 'axios';
 
 
 
 
 export default function ProductDetail({cartItems, setCartItems}) {
 
-    URL="http://localhost:8000/api/v1";
-    // URL="https://e-commerce-e1f2.onrender.com";
+    //URL="http://localhost:8000/api/v1";
+     URL="https://e-commerce-e1f2.onrender.com";
     const [product, setProduct] = useState(null);
     const [qty, setQty] = useState(1);
     const {id} = useParams();
@@ -17,7 +17,7 @@ export default function ProductDetail({cartItems, setCartItems}) {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await fetch(URL +`/product/${id}`);
+                const response = await Axios.get(URL +`/product/${id}`);
                 
                 if (!response.ok) {
                     console.log(`HTTP error! status: ${response.status}`);

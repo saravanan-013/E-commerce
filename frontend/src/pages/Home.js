@@ -1,16 +1,16 @@
 import {Fragment, useEffect, useState} from 'react'
 import ProductCard from '../components/ProductCard'
 import { useSearchParams } from 'react-router-dom';
-
+import  Axios from 'axios';
 export default function Home() {
     const [products, setProducts] = useState([]);
     const [searchParams, setSearchParams] =  useSearchParams()
-    // URL="https://e-commerce-e1f2.onrender.com";
-    URL="http://localhost:8000/api/v1";
+    URL="https://e-commerce-e1f2.onrender.com";
+    //URL="http://localhost:8000/api/v1";
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch( URL +`/products?${searchParams}`);
+                const response = await Axios.get( URL +`/products?${searchParams}`);
                 
                 if (!response.ok) {
                     console.log(`HTTP error! status: ${response.status}`);
