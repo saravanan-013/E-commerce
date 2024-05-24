@@ -5,13 +5,12 @@ import { useSearchParams } from 'react-router-dom';
 export default function Home() {
     const [products, setProducts] = useState([]);
     const [searchParams, setSearchParams] =  useSearchParams()
-    const {id} = useSearchParams();
     URL="https://e-commerce-e1f2.onrender.com";
     //URL="http://localhost:8000/api/v1";
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch( URL +`/products?${id}`);
+                const response = await fetch( URL +`/products?${searchParams}`);
                 
                 if (!response.ok) {
                     console.log(`HTTP error! status: ${response.status}`);
@@ -30,7 +29,7 @@ export default function Home() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch(`${URL}/products?${id}`);
+                const response = await fetch(`${URL}/products?${searchParams}`);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
