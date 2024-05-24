@@ -7,7 +7,7 @@ export default function ProductDetail({cartItems, setCartItems}) {
     const [qty, setQty] = useState(1);
     const {id} = useParams();
     URL="https://e-commerce-e1f2.onrender.com";
-    
+
     useEffect(() => {
         const fetchProduct = async () => {
             try {
@@ -29,7 +29,7 @@ export default function ProductDetail({cartItems, setCartItems}) {
 
 
     function addToCart() {
-        const itemExist = cartItems.find((item) => item.product._id == product._id)
+        const itemExist = cartItems.find((item) => item.product._id === product._id)
         if (!itemExist) {
             const newItem = {product, qty};
             setCartItems((state) => [...state, newItem]);
@@ -38,7 +38,7 @@ export default function ProductDetail({cartItems, setCartItems}) {
     }
 
     function increaseQty() {
-        if (product.stock == qty) {
+        if (product.stock === qty) {
             return;
         }
         setQty((state) => state + 1);

@@ -9,7 +9,7 @@ export default function Home() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch( URL +`/products?${searchParams}`);
+                const response = await fetch( URL +"/products");
                 
                 if (!response.ok) {
                     console.log(`HTTP error! status: ${response.status}`);
