@@ -10,7 +10,7 @@ export default function Home() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await Axios.get( URL +`/products?${searchParams}`);
+                const response = await Axios.get( URL +"/products");
                 
                 if (!response.ok) {
                     console.log(`HTTP error! status: ${response.status}`);
