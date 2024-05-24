@@ -40,18 +40,27 @@ export default function Cart({cartItems, setCartItems}) {
     }
     URL="https://e-commerce-e1f2.onrender.com";
     function placeOrderHandler() {
-        fetch(URL+'/order', {
+        fetch(URL + '/order', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(cartItems)
         })
-        .then(() => { 
-            setCartItems([]); 
-            setComplete(true);
-            toast.success("Order Success!")
+        .then(response => {
+            if (!response.ok) {
+                console.log('Failed to place order');
+            }
+            return response.json();
         })
+        .then(() => {
+            setCartItems([]);
+            setComplete(true);
+            toast.success("Order Success!");
+        })
+        .catch(error => {
+            console.log('Error placing order:', error);
+            toast.error("Failed to place order. Please try again later.");
+        });
     }
-
 
 
     return  cartItems.length > 0 ? <Fragment>
