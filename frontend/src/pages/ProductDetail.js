@@ -2,12 +2,18 @@ import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import {toast} from 'react-toastify';
 
+
+
+
+
 export default function ProductDetail({cartItems, setCartItems}) {
+
+    URL="http://localhost:8000/api/v1";
+    // URL="https://e-commerce-e1f2.onrender.com";
     const [product, setProduct] = useState(null);
     const [qty, setQty] = useState(1);
     const {id} = useParams();
-    URL="https://e-commerce-e1f2.onrender.com";
-
+    
     useEffect(() => {
         const fetchProduct = async () => {
             try {

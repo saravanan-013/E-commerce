@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import {toast} from 'react-toastify';
 
 export default function Cart({cartItems, setCartItems}) {
+
+    URL="http://localhost:8000/api/v1";
     const [complete, setComplete] = useState(false);
 
     function increaseQty(item) {
@@ -38,7 +40,7 @@ export default function Cart({cartItems, setCartItems}) {
         })
         setCartItems(updatedItems)
     }
-    URL="https://e-commerce-e1f2.onrender.com";
+    // URL="https://e-commerce-e1f2.onrender.com";
     function placeOrderHandler() {
         fetch(URL+'/order', {
             method: 'POST',
