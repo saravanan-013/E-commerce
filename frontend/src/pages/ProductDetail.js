@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import {toast} from 'react-toastify';
-import  Axios from 'axios';
+
 
 
 
@@ -17,7 +17,7 @@ export default function ProductDetail({cartItems, setCartItems}) {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await Axios.get(URL +`/product/${id}`);
+                const response = await fetch(URL +`/product/${id}`);
                 
                 if (!response.ok) {
                     console.log(`HTTP error! status: ${response.status}`);
